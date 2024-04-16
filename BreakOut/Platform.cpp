@@ -1,9 +1,9 @@
 #include "Platform.h"
 
-Platform::Platform()
+Platform::Platform(sf::Vector2f screenSize)
 {
-	pos.x= glob::screenSize.x/2;
-	pos.y = glob::screenSize.y+20;
+	pos.x= screenSize.x/2;
+	pos.y = screenSize.y-20;
 }
 
 void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const

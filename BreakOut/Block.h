@@ -1,13 +1,11 @@
 #pragma once
 #include<SFML/Graphics.hpp>
-#include"Global.h"
-class Platform:public sf::Drawable
+class Block :public sf::Drawable
 {
 	sf::Vector2f pos;
-	
+
 public:
-	Platform(sf::Vector2f screenSize);
+	Block(sf::Vector2f position);
 	void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
-	void move(sf::Vector2f shift);
 };
 
