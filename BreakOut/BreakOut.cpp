@@ -1,14 +1,17 @@
 #include <SFML/Graphics.hpp>
 #include"Platform.h"
-#include"Block.h"
+#include"Configs.h"
+#include"LevelManager.h"
 int main()
 {
+    globalConfigs.setScreen(sf::Vector2i(800, 600));
     // Create a window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Window");
-    Platform platform(sf::Vector2f(800,600));
+    sf::RenderWindow window(sf::VideoMode(globalConfigs.getScreen<int>().x, globalConfigs.getScreen<int>().y), "SFML Window");
+    Platform platform(globalConfigs.getScreen<float>());
     // Main loop
-    Block a(sf::Vector2f(5, 5));
-    Block b(sf::Vector2f(100, 8));
+   
+    LevelManager manage;
+    manage.switchLevel(1);
     while (window.isOpen())
     {
         // Handle events
@@ -30,8 +33,7 @@ int main()
         // Clear the window
         window.clear();
         window.draw(platform);
-        window.draw(a);
-        window.draw(b);
+        window.draw(manage);
         // Display the window contents
         window.display();
     }

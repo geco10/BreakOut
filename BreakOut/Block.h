@@ -1,4 +1,5 @@
 #pragma once
+#include"Configs.h"
 #include<SFML/Graphics.hpp>
 class Block :public sf::Drawable
 {

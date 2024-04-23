@@ -1,6 +1,5 @@
 #pragma once
 #include<SFML/Graphics.hpp>
-#include"Global.h"
 class Platform:public sf::Drawable
 {
 	sf::Vector2f pos;
