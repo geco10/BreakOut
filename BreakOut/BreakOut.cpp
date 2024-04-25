@@ -1,17 +1,14 @@
 #include <SFML/Graphics.hpp>
-#include"Platform.h"
 #include"Configs.h"
-#include"LevelManager.h"
+#include"Controller.h"
 int main()
 {
+    Controller controller;
     globalConfigs.setScreen(sf::Vector2i(800, 600));
     // Create a window
     sf::RenderWindow window(sf::VideoMode(globalConfigs.getScreen<int>().x, globalConfigs.getScreen<int>().y), "SFML Window");
-    Platform platform(globalConfigs.getScreen<float>());
     // Main loop
-   
-    LevelManager manage;
-    manage.switchLevel(1);
+    sf::View view = window.getDefaultView();
     while (window.isOpen())
     {
         // Handle events
@@ -22,19 +19,24 @@ int main()
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Right)
-                    platform.move(sf::Vector2f(7, 0));
+                    controller.movePlatform(sf::Vector2f(7, 0));
             }
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Left)
-                    platform.move(sf::Vector2f(-7, 0));
+                    controller.movePlatform(sf::Vector2f(-7, 0));
+            }
+            if (event.type == sf::Event::Resized) {
+                view.setSize({
+                   static_cast<float>(event.size.width),
+                   static_cast<float>(event.size.height)
+                });
+                window.setView(view);
+                globalConfigs.setScreen(sf::Vector2i(event.size.width, event.size.height));
+                
             }
         }
 
-        // Clear the window
-        window.clear();
-        window.draw(platform);
-        window.draw(manage);
-        // Display the window contents
+        // Clear the 
         window.display();
     }
 

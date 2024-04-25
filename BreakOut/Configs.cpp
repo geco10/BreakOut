@@ -10,7 +10,7 @@ float Configs::getLen() const
 {
 	Configs* a = const_cast<Configs*>(this);
 	float xLen=screenSize.x/15.0;
-	float yLen = (screenSize.y*0.4) / 10;
+	float yLen = (screenSize.y*0.5) / 10;
 	if (xLen > yLen)
 		a->len = yLen;
 	else

@@ -5,7 +5,6 @@
 class Map:public sf::Drawable
 {
 	std::vector<std::string>map;
-	const float len = globalConfigs.getLen();
 public:
 	void manual(std::vector<std::string>Map);
 	void LoadFromFile(std::string path);
