@@ -2,6 +2,12 @@
 #include<iostream>
 
 
+Platform::Platform()
+{
+	pos.x = globalConfigs.getGameScreenSize().x / 2.0;
+	pos.y= globalConfigs.getGameScreenSize().y - size.x;
+}
+
 void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const
 {
 	sf::Texture texture;
@@ -12,8 +18,8 @@ void Platform::draw(sf::RenderTarget& target, sf::RenderStates states)const
 	
 	sf::Sprite Sprite;
 	Sprite.setTexture(texture);
-	Sprite.setScale(sf::Vector2f(texture.getSize().x / 50.0, texture.getSize().y / 13.0));
-    Sprite.setPosition(pos);
+	Sprite.setScale(sf::Vector2f(texture.getSize().x / (globalConfigs.getLen()*size.x), texture.getSize().y / (globalConfigs.getLen()*size.y)));
+    Sprite.setPosition(pos*globalConfigs.getLen());
 	target.draw(Sprite);
 	/*sf::RectangleShape plat(sf::Vector2f(50,13 ));
 	plat.setFillColor(sf::Color::Blue);

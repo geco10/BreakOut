@@ -3,8 +3,9 @@
 #include"Controller.h"
 int main()
 {
-    Controller controller;
     globalConfigs.setScreen(sf::Vector2i(800, 600));
+    globalConfigs.setGameScreen(sf::Vector2f(15, 10));
+    Controller controller;
     // Create a window
     sf::RenderWindow window(sf::VideoMode(globalConfigs.getScreen<int>().x, globalConfigs.getScreen<int>().y), "SFML Window");
     // Main loop
@@ -19,11 +20,11 @@ int main()
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Right)
-                    controller.movePlatform(sf::Vector2f(7, 0));
+                    controller.movePlatform(sf::Vector2f(0.1, 0));
             }
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Left)
-                    controller.movePlatform(sf::Vector2f(-7, 0));
+                    controller.movePlatform(sf::Vector2f(-0.1,0));
             }
             if (event.type == sf::Event::Resized) {
                 view.setSize({
@@ -35,8 +36,8 @@ int main()
                 
             }
         }
-
-        // Clear the 
+        window.clear();
+        window.draw(controller);
         window.display();
     }
 

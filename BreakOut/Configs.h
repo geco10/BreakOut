@@ -3,9 +3,12 @@
 
 class Configs {
 	float len;
+	sf::Vector2f gameScreenSize;
 	sf::Vector2i screenSize;
 public:
 	void setScreen(sf::Vector2i screenSize);
+	sf::Vector2f getGameScreenSize()const;
+	void setGameScreen(sf::Vector2f g);
 	float getLen()const;
 	template <typename Type>
 	sf::Vector2<Type> getScreen()const;

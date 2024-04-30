@@ -1,9 +1,18 @@
 #include "Projectile.h"
+#include"Configs.h"
 
 void Projectile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	sf::CircleShape cir(10);
-	cir.setPosition(pos);
-	cir.setFillColor(sf::Color::Red);
-	target.draw(cir);
+	sf::Texture texture;
+	if (!texture.loadFromFile("Pics/ball.png"))
+	{
+		// Error...
+	}
+
+	sf::Sprite Sprite;
+	Sprite.setTexture(texture);
+	Sprite.setScale(sf::Vector2f(globalConfigs.getLen() / texture.getSize().x, globalConfigs.getLen() / texture.getSize().y));
+	Sprite.setPosition(pos);
+	target.draw(Sprite);
+
 }
