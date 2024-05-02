@@ -1,8 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include"Configs.h"
+#include<iostream>
 #include"Controller.h"
+#include<Windows.h>
+size_t toMilliseconds(SYSTEMTIME time) {
+    return time.wHour * 3600000 + time.wMinute * 60000 + time.wSecond * 1000 + time.wMilliseconds;
+}
 int main()
 {
+    SYSTEMTIME time;
+    GetLocalTime(&time);
     globalConfigs.setScreen(sf::Vector2i(800, 600));
     globalConfigs.setGameScreen(sf::Vector2f(15, 10));
     Controller controller;
@@ -36,6 +43,12 @@ int main()
                 
             }
         }
+        SYSTEMTIME time1;
+        GetLocalTime(&time1);
+        float delta = toMilliseconds(time1) - toMilliseconds(time);
+        time = time1;
+        delta = delta / 1000.f;
+        std::cout << delta<<'\n';
         window.clear();
         window.draw(controller);
         window.display();

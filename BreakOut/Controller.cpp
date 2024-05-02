@@ -11,3 +11,6 @@ void Controller::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(level);
 	target.draw(proj);
 }
+void Controller::tick(float delta) {
+	this->delta = delta;
+}
