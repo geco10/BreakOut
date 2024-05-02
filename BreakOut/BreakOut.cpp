@@ -20,11 +20,11 @@ int main()
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Right)
-                    controller.movePlatform(sf::Vector2f(0.1, 0));
+                    controller.movePlatform(sf::Vector2f(0.2, 0));
             }
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Left)
-                    controller.movePlatform(sf::Vector2f(-0.1,0));
+                    controller.movePlatform(sf::Vector2f(-0.2,0));
             }
             if (event.type == sf::Event::Resized) {
                 view.setSize({
